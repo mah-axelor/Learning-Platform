@@ -3,7 +3,7 @@ import { QuestionType } from "./QuestionType";
 import { Quizz } from "./Quizz";
 
 export interface Question{
-    id: number;
+    id?: number;
     quizz: Quizz;
     text: string;
     type: QuestionType;

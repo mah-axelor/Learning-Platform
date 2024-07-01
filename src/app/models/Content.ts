@@ -1,10 +1,12 @@
+import { ContentType } from "./ContentType";
 import { Step } from "./Step";
 
 export interface Content{
-    id: number;
+    id?: number;
     title?: string;
     text?: string;
     url?: string;
     orderNumber: number;
     step: Step;
+    type: ContentType
 }

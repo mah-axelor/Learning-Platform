@@ -7,10 +7,10 @@
   
     <!-- Buttons container -->
     <div class="position-fixed bottom-0 end-0 mb-3 me-3 d-flex flex-column">
-      <button type="button" class="btn btn-primary mb-2">Add Text</button>
-      <button type="button" class="btn btn-primary mb-2">Add Video</button>
-      <button type="button" class="btn btn-primary mb-2">Add Image</button>
-      <app-step-popup></app-step-popup>
+      <button type="button" class="btn btn-primary mb-2" (click)="addTextOpenDialog()">Add Text</button>
+      <button type="button" class="btn btn-primary mb-2" (click)="addImageOpenDialog()">Add Image</button>
+      <button type="button" class="btn btn-primary mb-2" (click)="addVideoOpenDialog()">Add Video</button>
+      
     </div>
   </div>
     

@@ -2,7 +2,7 @@ import { Quizz } from "./Quizz";
 import { Step } from "./Step";
 
 export interface Cours{
-    id: number;
+    id?: number;
     name: string;
     openingDate?: Date;
     closingDate?: Date;
