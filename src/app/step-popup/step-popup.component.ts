@@ -32,9 +32,21 @@ export class StepPopupComponent {
 
   onFileChange(event: any){
    if(event.target.files.length > 0) {
-    this.selectedFile = event.target.files[0];
+    const maxFileSize = 10 * 1024 * 1024; // 10MB in bytes
+    const file = event.target.files[0];
+    if (file && file.size > maxFileSize) {
+      alert('File size exceeds the 10MB limit.');
+      return;
+    }    
+    this.selectedFile = file;
     }
   }
+
+  onSave(formData: FormData): void{
+    this.dialogRef.close(formData);
+  }
+
+
   onValidate(contentForm: NgForm){
     console.log("file:",this.selectedFile);
     if(!this.selectedFile && this.contentType!=0){
@@ -51,18 +63,10 @@ export class StepPopupComponent {
      text: this.contentText,
      title: this.contentTitle
    }; 
-  //  formData.append('contentType',this.contentType.toString());
-  //   formData.append('orderNumber', this.orderNumber.toString());
-  //   formData.append(' contentTitle', this. contentTitle);
-  //   formData.append(' contentText', this. contentText);
-  //   formData.append(' step', JSON.stringify(this.step));
+
   formData.append('content', JSON.stringify(content));
 
-    this.contentService.sendContent(formData).subscribe(res =>{
-      console.log('response:'+res)
-    },
-    err => console.log("error:", err)
-    );
+    this.onSave(formData);
   }
 
 }

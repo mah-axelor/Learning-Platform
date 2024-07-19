@@ -17,6 +17,12 @@ export class ContentService {
       catchError(this.handleError)
     );;
   }
+
+  getContentList():Observable<Content[]>{
+     return this.http.get<Content[]>(this.apiUrl).pipe(
+      catchError(this.handleError)
+    );
+  }
   
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';

@@ -3,13 +3,24 @@
     <!-- Main content area -->
     <div class="flex-grow-1">
       <!-- Your main content goes here -->
+      <div *ngFor="let content of contentList">
+        <h3>{{content.title}}</h3>
+        <img  *ngIf="content.type==1" [src]="content.url" alt="image not displayed">
+        <video *ngIf="content.type==2" width="320" height="240" controls>
+          <source [src]="content.url" type="video/mp4">          
+        Your browser does not support the video tag.
+        </video>
+        <p *ngIf="content.type==0">{{content.text}}</p>
+      </div>
     </div>
   
     <!-- Buttons container -->
     <div class="position-fixed bottom-0 end-0 mb-3 me-3 d-flex flex-column">
-      <button type="button" class="btn btn-primary mb-2" (click)="addTextOpenDialog()">Add Text</button>
-      <button type="button" class="btn btn-primary mb-2" (click)="addImageOpenDialog()">Add Image</button>
-      <button type="button" class="btn btn-primary mb-2" (click)="addVideoOpenDialog()">Add Video</button>      
+      <button type="button" class="btn btn-primary mb-2" (click)="addContentOpenDialog(typeText)">Add Text</button>
+      <button type="button" class="btn btn-primary mb-2" (click)="addContentOpenDialog(typeImage)">Add Image</button>
+      <button type="button" class="btn btn-primary mb-2" (click)="addContentOpenDialog(typeVideo)">Add Video</button>           
     </div>
+
+    
   </div>
     
