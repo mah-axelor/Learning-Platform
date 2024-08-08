@@ -66,7 +66,7 @@ export class StepPopupComponent {
 
   formData.append('content', JSON.stringify(content));
 
-    this.onSave(formData);
+  this.onSave(formData);
   }
 
 }

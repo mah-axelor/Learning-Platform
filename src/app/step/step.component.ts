@@ -25,20 +25,28 @@ export class StepComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.contentService.getContentList().subscribe({
       next: data => this.contentList = data,
       error: err=> console.error(err)
     })
   }
 
+
+  public getOrderedContentList():Content[]{
+    return this.contentList.sort((content1,content2)=>content1.orderNumber-content2.orderNumber);
+  }
+
+  public getNextOrder():Number{
+    return this.contentList.length +1;
+  }
  
   
   public addContentOpenDialog(type: ContentType){
     let dialogRef = this.dialog.open(StepPopupComponent, {
       width:'700px',
       height: '700px',
-      data:{orderNumber:6, step:{}, contentType: type}
+      data:{orderNumber:this.getNextOrder(), step:{}, contentType: type}
     })
 
    const dialogSub =  dialogRef.afterClosed().subscribe({

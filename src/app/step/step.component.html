@@ -3,7 +3,7 @@
     <!-- Main content area -->
     <div class="flex-grow-1">
       <!-- Your main content goes here -->
-      <div *ngFor="let content of contentList">
+      <div *ngFor="let content of getOrderedContentList()">
         <h3>{{content.title}}</h3>
         <img  *ngIf="content.type==1" [src]="content.url" alt="image not displayed">
         <video *ngIf="content.type==2" width="320" height="240" controls>
