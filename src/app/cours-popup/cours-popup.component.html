@@ -1,0 +1,28 @@
+<form #courseForm="ngForm" (ngSubmit)="onSubmit()" appCoursValidator>
+    <h2 mat-dialog-title>Add Course</h2>
+    <div mat-dialog-content>    
+        <div class="form-group">
+            <label class="form-label">course name:</label>
+            <input name="courseName" class="form-control" type="text" required #courseNameRef="ngModel" [(ngModel)]="course.name" >           
+            <small class="text-danger" *ngIf="courseForm.errors?.['invalidName'] && courseNameRef.touched">course name is required</small>
+        </div>
+        <div class="form-group">
+            <label class="form-label">opening date:</label>
+            <input name="openingDate" class="form-control" type="date"  #courseOpenDate="ngModel" [(ngModel)]="course.openingDate" [class.is-invalid]="courseForm.errors?.['invalidOpeningDate']">            
+            <small class="text-danger" *ngIf="courseForm.errors?.['invalidOpeningDate']">Opening Date should be filled</small>
+        </div>
+        <div class="form-group">
+            <label class="form-label">closing date:</label>
+            <input name="closingDate" class="form-control" type="date"  #courseCloseDate="ngModel" [(ngModel)]="course.closingDate" [class.is-invalid]="courseForm.errors?.['invalidDates']">           
+            <small class="text-danger" *ngIf="courseForm.errors?.['invalidDates']">Closing Date must be after the Opening Date </small>
+        </div>
+        <div class="form-group">
+            <label class="form-label">description:</label>
+            <textarea name="description" class="form-control" type="text" [(ngModel)]="course.description"></textarea>      
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button type="button" mat-button (click)="onCancel()" class="btn btn-danger">Cancel</button>  
+        <button type="submit" mat-button  class="btn btn-primary" [disabled]="courseForm.form.invalid">Add</button>        
+    </div>    
+</form>

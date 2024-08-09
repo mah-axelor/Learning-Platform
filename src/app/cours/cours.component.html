@@ -1,1 +1,15 @@
-<p>cours works!</p>
+<h1 style="margin-left: 20px;">{{course?.name}}</h1>
+<div class="container">
+    <div class ="left">
+        <small *ngIf="course.openingDate">opens:{{course.openingDate | date:'dd/MM/yyyy'}} &nbsp; closes:{{course.closingDate |  date:'dd/MM/yyyy'}} </small>
+        <span *ngIf="course.open" class="badge bg-success">Open</span> 
+        <span *ngIf="course.isClosed" class="badge bg-danger">Closed</span> 
+        <span *ngIf="!course.isClosed && !course.open" class="badge bg-warning">Not open yet</span>
+        <br/><br/>
+        <div>{{course?.description}}</div>
+    </div>
+    <div class="right">              
+        <span *ngIf="course.open" class="btn btn-primary">Enroll</span>
+    </div>
+</div>
+

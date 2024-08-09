@@ -18,4 +18,13 @@ export class CoursesService extends ServiceService{
   public getAllCourses(): Observable<Cours[]>{
     return this.http.get<Cours[]>(this.apiUrl).pipe(catchError(this.handleError));
   }
+
+  public getCourseById(courseId: any): Observable<Cours>{
+    return this.http.get<Cours>(this.apiUrl+`/${courseId}`).pipe(catchError(this.handleError));
+  }
+
+  public sendCourse(course: Cours): Observable<Cours>{
+    console.log('course:', course);
+    return this.http.post<Cours>(this.apiUrl,course).pipe(catchError(this.handleError));
+  }
 }

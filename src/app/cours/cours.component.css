@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.left{
+ max-width: 60%;
+}

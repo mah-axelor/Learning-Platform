@@ -16,6 +16,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { StepsComponent } from './steps/steps.component';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
+import { CoursPopupComponent } from './cours-popup/cours-popup.component';
+import { CoursValidatorDirective } from './validators/cours-validator.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { MyCoursesComponent } from './my-courses/my-courses.component';
     NavBarComponent,
     StepsComponent,
     MyCoursesComponent,
+    CoursPopupComponent,
+    CoursValidatorDirective,
     
   ],
   imports: [

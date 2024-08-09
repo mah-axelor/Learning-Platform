@@ -6,7 +6,9 @@ export interface Cours{
     name: string;
     openingDate?: Date;
     closingDate?: Date;
-    isOpen?: boolean;
+    open?: boolean;
+    isClosed?: boolean;
     quizzList?: Quizz[];
     stepList?: Step[];
+    description?: string;
 }
