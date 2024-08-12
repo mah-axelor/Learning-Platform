@@ -9,7 +9,7 @@
         <div>{{course?.description}}</div>
     </div>
     <div class="right">              
-        <span *ngIf="course.open" class="btn btn-primary">Enroll</span>
+        <span *ngIf="course.open" class="btn btn-primary" (click)="enroll()">Enroll</span>
     </div>
 </div>
 

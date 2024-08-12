@@ -1,0 +1,33 @@
+    <div class="container">
+        <div class="inner">
+    <form  #registerForm="ngForm" appUserValidator>
+        <div class="form-group">
+            <label class="form-label">first name:</label>
+            <input name="firstName" class="form-control" type="text" [(ngModel)]="user.firstName" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">last name:</label>
+            <input name="lastName" class="form-control" type="text" [(ngModel)]="user.lastName" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">username:</label>
+            <input name="username" class="form-control" type="text" placeholder="user@gmail.com" [(ngModel)]="user.email" required [class.is-invalid]="userExist">
+            <small class="text-danger" *ngIf="userExist">username already in use</small>
+        </div> 
+        <div class="form-group">
+            <label class="form-label">password:</label>
+            <input name="password" class="form-control" type="password" [(ngModel)]="user.password" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">confirm password:</label>            
+            <input name="confPassword" class="form-control" type="password" #confRef="ngModel" [(ngModel)]="confPassword" required>
+            <small class="text-danger" *ngIf="registerForm.errors?.['doesntMatch'] && confRef.touched">doesnt match password</small>
+        </div> 
+        <br/>
+        <button style="margin-left: 30%;" [disabled]="registerForm.form.invalid" class="btn btn-primary" (click)="register()">Register</button>   
+    </form>    
+    </div>
+    </div>
+    
+
+

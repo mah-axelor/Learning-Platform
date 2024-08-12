@@ -6,5 +6,6 @@ export interface Step{
     cours: Cours;
     orderNumber: number;
     contentList?: Content[]
+    title: string
 
 }

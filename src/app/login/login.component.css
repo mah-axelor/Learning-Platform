@@ -1,0 +1,21 @@
+
+.container{    
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.inner{
+    border: solid;
+    padding: 100px;
+}
+small{
+    text-decoration: underline;
+    color: blue;
+}
+
+:host{
+    height: 100%;
+    
+}

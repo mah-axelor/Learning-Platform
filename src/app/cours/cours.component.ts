@@ -29,4 +29,9 @@ ngOnInit(): void {
     this.subscriptions.add(getCourseSub);
     
   }
+
+
+  public enroll(){
+    
+  }
 }

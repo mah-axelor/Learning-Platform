@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-
+  apiUrl: string = 'http://localhost:8080/api';
   constructor() { }
 
   protected handleError(error: HttpErrorResponse) {

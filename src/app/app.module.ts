@@ -9,7 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { CoursComponent } from './cours/cours.component';
 import { CoursesComponent } from './courses/courses.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,6 +18,10 @@ import { StepsComponent } from './steps/steps.component';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
 import { CoursPopupComponent } from './cours-popup/cours-popup.component';
 import { CoursValidatorDirective } from './validators/cours-validator.directive';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { UserValidatorDirective } from './validators/user-validator.directive';
+import { authInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { CoursValidatorDirective } from './validators/cours-validator.directive'
     MyCoursesComponent,
     CoursPopupComponent,
     CoursValidatorDirective,
+    RegisterComponent,
+    LoginComponent,
+    UserValidatorDirective,
     
   ],
   imports: [
@@ -44,7 +51,8 @@ import { CoursValidatorDirective } from './validators/cours-validator.directive'
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch(),withInterceptors([authInterceptor])),
+    
   ],
   bootstrap: [AppComponent]
 })

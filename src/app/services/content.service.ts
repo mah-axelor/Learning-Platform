@@ -8,7 +8,9 @@ import { ServiceService } from './service.service';
   providedIn: 'root'
 })
 export class ContentService extends ServiceService {
-  apiUrl: string = 'http://localhost:8080/api/content';
+ 
+  path: string = '/content';
+  url = this.apiUrl+this.path;
   constructor(private http: HttpClient) {
     super();
   }
@@ -16,13 +18,13 @@ export class ContentService extends ServiceService {
 
   sendContent(formData: FormData): Observable<Content>{
    console.log("sending data")
-    return this.http.post<Content>(this.apiUrl, formData).pipe(
+    return this.http.post<Content>(this.url, formData).pipe(
       catchError(this.handleError)
     );;
   }
 
   getContentList():Observable<Content[]>{
-     return this.http.get<Content[]>(this.apiUrl).pipe(
+     return this.http.get<Content[]>(this.url).pipe(
       catchError(this.handleError)
     );
   }
