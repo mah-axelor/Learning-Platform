@@ -1,10 +1,10 @@
 <mat-toolbar class="bg-primary">
   
-    <a mat-button class="text-white">Log out</a>
+    <a *ngIf="currentUsername" mat-button class="text-white" (click)="logOut()">Log out</a>
     <div class="spacer"></div>
     <a routerLink='/myCourses' mat-button class="text-white">My courses</a>   
     <a routerLink='/courses' mat-button routerLinkActive="active" class="text-white">Courses</a>   
-    <a routerLink='/login' mat-raised-button >Login</a> 
-    
+    <a *ngIf="!currentUsername" routerLink='/login' mat-raised-button >Login</a> 
+    <small style="color: yellow; text-decoration: underline;">{{currentUsername}}</small>
   </mat-toolbar>
  

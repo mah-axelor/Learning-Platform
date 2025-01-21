@@ -1,8 +1,8 @@
-import { Cours } from "./Cours";
+import { Course }  from "./Course";
 import { User } from "./User";
 
 export interface User_Cours{
-    user: User;
-    cours: Cours;
+    userId: number;
+    courseId: number;
     enrollementDate?: Date;
 }

@@ -4,7 +4,7 @@ import { Quizz } from "./Quizz";
 
 export interface Question{
     id?: number;
-    quizz: Quizz;
+    quizzId?: number;
     text: string;
     type: QuestionType;
     value: number;

@@ -1,0 +1,11 @@
+<div>
+    <div *ngFor="let course of myCourses" (click)="navigate(course)">        
+        <h3>{{course.name}}</h3>
+         <small *ngIf="course.openingDate">opens:{{course.openingDate | date:'dd/MM/yyyy'}} &nbsp; closes:{{course.closingDate |  date:'dd/MM/yyyy'}} </small>
+           <span *ngIf="course.isOpen" class="badge bg-success">Open</span> 
+           <span *ngIf="course.isClosed" class="badge bg-danger">Closed</span> 
+           <span *ngIf="!course.isClosed && !course.isOpen" class="badge bg-warning">Not open yet</span> 
+        <hr/>
+    </div>    
+   <router-outlet/>
+</div>

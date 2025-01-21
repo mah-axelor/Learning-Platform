@@ -1,12 +1,12 @@
 import { Quizz } from "./Quizz";
 import { Step } from "./Step";
 
-export interface Cours{
+export interface Course{
     id?: number;
     name: string;
     openingDate?: Date;
     closingDate?: Date;
-    open?: boolean;
+    isOpen?: boolean;
     isClosed?: boolean;
     quizzList?: Quizz[];
     stepList?: Step[];

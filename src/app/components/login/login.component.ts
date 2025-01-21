@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -19,9 +20,12 @@ this.router.navigate(["/register"]);
 
   public login(){
     this.userService.login(this.username,this.password).subscribe({
-      next: (tokenJson:{token:string}) => {
-        console.log("tokenJson:",tokenJson)
-        this.userService.setToken(tokenJson.token)},
+      next: (tokenJson:{token:string}) => {        
+        this.userService.setToken(tokenJson.token);        
+        this.router.navigate(['/myCourses']).then(()=>location.reload()); 
+             
+      },
+
       error: e=>console.error("error:",e)    
     })
   }

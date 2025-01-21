@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CoursesService } from '../services/courses.service';
-import { Cours } from '../models/Cours';
+import { CoursesService } from '../../services/courses.service';
+import { Course }  from '../../models/Course';
 import { MatDialog } from '@angular/material/dialog';
 import { CoursPopupComponent } from '../cours-popup/cours-popup.component';
 import { Subscription } from 'rxjs';
@@ -13,17 +13,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CoursesComponent implements OnInit, OnDestroy {
 
-  courseList: Cours[] = [];
+  courseList: Course[] = [];
   private subscriptions: Subscription = new Subscription();
   constructor(private coursesService: CoursesService,private dialog: MatDialog, private router: Router, private route: ActivatedRoute){}
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+  // ngOnInit(): void {
+  //   this.coursesService.getAllCourses().subscribe({
+  //     next: data => this.courseList = data,
+  //     error: error => console.error(error)      
+  //   })
+  // }
   ngOnInit(): void {
-    this.coursesService.getAllCourses().subscribe({
-      next: data => this.courseList = data,
-      error: error => console.error(error)      
-    })
+    this.coursesService.getAllCourses().subscribe(
+       (data:Course[]) => this.courseList = data,
+           
+    )
   }
 
 
@@ -50,7 +56,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
 
 
-  public navigate(course: Cours){
+  public navigate(course: Course){
     this.router.navigate([course.id],{relativeTo:this.route})
   }
 

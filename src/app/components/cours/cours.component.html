@@ -1,0 +1,37 @@
+
+  <div class ="head">
+    <h2 style="margin-left: 20px;">{{course?.name}}<span *ngIf="course?.isOpen" class="btn btn-primary" (click)="enroll()">Enroll</span></h2>
+    <small *ngIf="course?.openingDate">opens:{{course.openingDate | date:'dd/MM/yyyy'}} &nbsp; closes:{{course.closingDate |  date:'dd/MM/yyyy'}} </small>
+    <span *ngIf="course?.isOpen" class="badge bg-success">Open</span> 
+    <span *ngIf="course?.isClosed" class="badge bg-danger">Closed</span> 
+    <span *ngIf="course && !course?.isClosed && !course?.isOpen" class="badge bg-warning">Not open yet</span>        
+</div>
+
+<div class="middle">
+    <div class="left"> <button type="button" class="btn btn-primary mb-2" (click)="addStep()">Add Step</button> 
+        <div *ngFor="let step of course?.stepList" class="step" (click)="showStep(step.id)">
+       <p style="marginLeft: 10px" >{{step.orderNumber}}. {{step.title}}</p>
+        </div>
+    </div>
+  
+    
+    <div class="content">
+         <router-outlet/>
+    </div>
+
+    <div class="right">          
+        <div class="">
+            <div><pre>{{course?.description}}</pre></div>
+                              
+          </div>
+    </div>
+</div>
+<h3 *ngIf="error && error==401; else elseError">Please register on the platform if you want to complete this action</h3>
+
+
+
+
+
+<ng-template #elseError>
+    <h3 *ngIf="error && error!=401">Internal Error, please try later</h3>
+</ng-template>

@@ -7,6 +7,6 @@ export interface Content{
     text?: string;
     url?: string;
     orderNumber: number;
-    step: Step;
+    stepId?: number;
     type: ContentType
 }

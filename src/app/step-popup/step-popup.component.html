@@ -1,40 +1,14 @@
-<form #contentForm ="ngForm" (ngSubmit)="onValidate(contentForm)">
-    <h1 mat-dialog-title>Add Text</h1>
-    <div mat-dialog-content>  
-
-        <div class="form-group" >  
-            <label class="form-label">Text title</label>
-            <mat-form-field style="display: block;">           
-                    
-                <input name="title" style="background-color: azure;" class="form-control" matInput [(ngModel)]="contentTitle">
-            
-            </mat-form-field>
-        </div>
-
-        <div class="form-group" *ngIf="contentType === 0"> 
-            <label class="form-label">Write your text in the text area</label>
-            <mat-form-field style="display: block;">
-                <textarea name="text" matInput #text="ngModel" [class.is-invalid]="text.touched && text.invalid" required style="background-color: azure; height: 250px;" class="form-control" [(ngModel)]="contentText"></textarea>    
-                <small class="text-danger" *ngIf="text.invalid && text.touched">The text is required</small>
-            </mat-form-field>
-        </div>
-
-        <div class="form-group" *ngIf="contentType === 1"> 
-            <label class="form-label">upload your image</label>         
-            <input name="file"  type="file" (change)="onFileChange($event)"  required  class="form-control">  
-            <small class="text-danger" *ngIf="imageInvalid">The image is required</small>            
-        </div>
-
-        <div class="form-group" *ngIf="contentType === 2"> 
-            <label class="form-label">upload your video</label>         
-            <input name="file"  type="file" (change)="onFileChange($event)"  required  class="form-control">  
-            <small class="text-danger" *ngIf="videoInvalid">The video is required</small>            
-        </div>
-
-    </div>                                  
-    <div mat-dialog-actions>
-    <button type="button" mat-button (click)="onCancel()" class="btn btn-danger">Cancel</button>  
-    <button type="submit" mat-button  class="btn btn-primary" [disabled]="contentForm.form.invalid">Add</button>        
+<form #stepForm="ngForm" (ngSubmit)="onSubmit()">
+    <h2 mat-dialog-title>Add Step</h2>
+    <div mat-dialog-content>    
+        <div class="form-group">
+            <label class="form-label">step title:</label>
+            <input name="stepTitle" class="form-control" type="text" required #stepTitleRef="ngModel" [(ngModel)]="stepTitle" [class.is-invalid]="stepTitleRef.errors?.['required'] && stepTitleRef.touched">           
+            <small class="text-danger" *ngIf="stepTitleRef.errors?.['required'] && stepTitleRef.touched">step title is required</small>            
+        </div>        
     </div>
+    <div mat-dialog-actions>
+        <button type="button" mat-button (click)="onCancel()" class="btn btn-danger">Cancel</button>  
+        <button type="submit" mat-button  class="btn btn-primary" [disabled]="stepForm.form.invalid">Add</button>        
+    </div>    
 </form>
-

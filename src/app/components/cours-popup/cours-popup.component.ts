@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Cours } from '../models/Cours';
+import { Course }  from '../../models/Course';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class CoursPopupComponent {
  
-  course: Cours = {name:""};
+  course: Course = {name:""};
 
 
 constructor(private dialogRef: MatDialogRef<CoursPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any){}

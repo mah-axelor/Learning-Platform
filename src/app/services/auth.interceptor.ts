@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   // Inject AuthService to access the stored token
   const userService = inject(UserService);
-console.log('intercept')
+
   // Retrieve the JWT token from the AuthService
   const authToken = userService.getToken();
 
@@ -16,7 +16,7 @@ console.log('intercept')
         Authorization: `Bearer ${authToken}`
       }
     });
-    console.log("req:",req)
+    
 
     // Pass the cloned request instead of the original request to the next handle
     return next(authReq);

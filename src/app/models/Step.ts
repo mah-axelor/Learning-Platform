@@ -1,9 +1,9 @@
 import { Content } from "./Content";
-import { Cours } from "./Cours";
+import { Course }  from "./Course";
 
 export interface Step{
     id?: number;
-    cours: Cours;
+    courseId?: number;
     orderNumber: number;
     contentList?: Content[]
     title: string
